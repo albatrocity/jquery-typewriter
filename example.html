@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.1/jquery.min.js"></script>
+    <!-- <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/2.1.0/bootstrap.min.js"></script> -->
+    <script type="text/javascript" src="coffee/jquery.typewriter.js"></script>
+    <!-- <link rel="stylesheet" type="text/css" href="http://twitter.github.com/bootstrap/1.4.0/bootstrap.min.css"> -->
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+  </head>
+  <body>
+    <div class="container">
+      <div class="bs-docs-grid">
+        <h1>Writers, start your engines...</h1>
+        <div class='racer'>
+          <h4>Leo Tolstoy</h4>
+          <p class='type-me'>We can know only that we know nothing. And that is the highest degree of human wisdom.</p>
+        </div>
+        <div class='racer'>
+          <h4>Hunter S. Thompson</h4>
+          <p class='type-me'>No sympathy for the devil; keep that in mind. Buy the ticket, take the ride...and if it occasionally gets a little heavier than what you had in mind, well...maybe chalk it off to forced conscious expansion: Tune in, freak out, get beaten.</p>
+        </div>
+      </div>
+      <div class='racer'>
+        <h4>Mark Twain</h4>
+        <p class='type-me'>Only one thing is impossible for God: To find any sense in any copyright law on the planet. </p>
+      </div>
+      <div class='racer'>
+        <h4>William S. Burroughs</h4>
+        <p class='type-me-fast'>After a shooting spree, they always want to take the guns away from the people who didn't do it. I sure as hell wouldn't want to live in a society where the only people allowed guns are the police and the military.</p>
+      </div>
+      <div class='racer'>
+        <h4>Barbie</h4>
+        <p class='type-me-slow'>I like ponies.</p>
+      </div>      
+      <a href="#" class="magic btn btn-primary">Go!</a>
+    </div>
+    <script type="text/javascript">
+      window.found_a_winner = false
+      $(window).on('typingComplete', function(e, el) {
+        $(el).parents('.racer').find('h4').append("<small> - finished</small>")
+        if ( !window.found_a_winner ) {
+          $(el).parents('.racer').css('background', 'yellow').append("<strong>Winner!</strong>")
+          window.found_a_winner = true
+        }
+      })
+      $('.type-me').typewriter({
+        auto: false
+      });
+      $('.type-me-fast').typewriter({
+        auto: false,
+        interval: 30
+      });
+      $('.type-me-slow').typewriter({
+        auto: false,
+        interval: 600
+      });
+
+      $('.magic').click(function(e) {
+        e.preventDefault();
+        $(e.target).hide();
+        $('h1').text("GO!")
+        $('.type-me, .type-me-fast, .type-me-slow').typewriter('type');
+      })      
+    </script>
+  </body>
+</html>
