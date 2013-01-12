@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <meta name="viewport" content="width=640" />
+
+    <link rel="stylesheet" href="stylesheets/core.css" media="screen"/>
+    <link rel="stylesheet" href="stylesheets/mobile.css" media="handheld, only screen and (max-device-width:640px)"/>
+    <link rel="stylesheet" href="stylesheets/pygment_trac.css"/>
+
+    <script type="text/javascript" src="javascripts/modernizr.js"></script>
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <script type="text/javascript" src="javascripts/headsmart.min.js"></script>
+    <script type="text/javascript">
+      $(document).ready(function () {
+        $('#main_content').headsmart()
+      })
+    </script>
+    <title>Jquery-typewriter by albatrocity</title>
+  </head>
+
+  <body>
+    <a id="forkme_banner" href="https://github.com/albatrocity/jquery-typewriter">View on GitHub</a>
+    <div class="shell">
+
+      <header>
+        <span class="ribbon-outer">
+          <span class="ribbon-inner">
+            <h1>Jquery-typewriter</h1>
+            <h2>A jQuery plugin to bring everyone's favorite PowerPoint text effect to the browser.</h2>
+          </span>
+          <span class="left-tail"></span>
+          <span class="right-tail"></span>
+        </span>
+      </header>
+
+      <section id="downloads">
+        <span class="inner">
+          <a href="https://github.com/albatrocity/jquery-typewriter/zipball/master" class="zip"><em>download</em> .ZIP</a><a href="https://github.com/albatrocity/jquery-typewriter/tarball/master" class="tgz"><em>download</em> .TGZ</a>
+        </span>
+      </section>
+
+
+      <span class="banner-fix"></span>
+
+
+      <section id="main_content">
+        <h1>jQuery Typewriter</h1>
+
+<p>For those who desire to bring the stunning visuals of PowerPoint 97 to the browser, jQuery Typewriter will present to you chunks of text, one painstaking letter at a time.</p>
+
+<h2>Dependencies</h2>
+
+<ul>
+<li><a href="http://jquery.com/">jQuery</a></li>
+</ul><h1>Usage</h1>
+
+<p><strong>HTML</strong></p>
+
+<div class="highlight"><pre>  <span class="nt">&lt;p</span> <span class="na">class=</span><span class="s">'type-me'</span><span class="nt">&gt;</span>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim.<span class="nt">&lt;/p&gt;</span>
+</pre></div>
+
+<p><strong>Javascript</strong></p>
+
+<div class="highlight"><pre>  <span class="c1">// Default auto-type</span>
+  <span class="nx">$</span><span class="p">(</span><span class="s1">'.type-me'</span><span class="p">).</span><span class="nx">typewriter</span><span class="p">();</span>
+
+  <span class="c1">// or pass in options</span>
+  <span class="nx">$</span><span class="p">(</span><span class="s1">'.type-me'</span><span class="p">).</span><span class="nx">typewriter</span><span class="p">({</span>
+    <span class="nx">auto</span><span class="o">:</span> <span class="kc">false</span><span class="p">,</span>
+    <span class="nx">interval</span><span class="o">:</span> <span class="mi">100</span><span class="p">,</span>
+    <span class="nx">caret</span><span class="o">:</span> <span class="p">{</span>
+      <span class="nx">visible</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+      <span class="nx">blink</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+      <span class="nx">interval</span><span class="o">:</span> <span class="mi">1000</span>
+    <span class="p">},</span>
+    <span class="nx">onLetter</span><span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">letter</span><span class="p">)</span> <span class="p">{</span>
+      <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">letter</span><span class="p">);</span>
+    <span class="p">},</span>
+    <span class="nx">onComplete</span><span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">$typed</span><span class="p">)</span> <span class="p">{</span>
+      <span class="nx">$typed</span><span class="p">.</span><span class="nx">css</span><span class="p">(</span><span class="s1">'background'</span><span class="p">,</span> <span class="s1">'blue'</span><span class="p">);</span>
+    <span class="p">}</span>
+  <span class="p">});</span>
+</pre></div>
+
+<p>The <code>auto</code> option will automatically start typing the text. If you have <code>auto</code> set to false, the Typwriter will be initiated, text will be hidden, and the caret will be inserted (unless you set <code>caret.visible</code> to false).</p>
+
+<p>To start typing an instantiated Typewriter, run <code>typewriter('type')</code> on it.</p>
+
+<div class="highlight"><pre>  <span class="nx">$</span><span class="p">(</span><span class="s2">".wait[data-speed='fast']"</span><span class="p">).</span><span class="nx">typewriter</span><span class="p">({</span>
+    <span class="nx">auto</span><span class="o">:</span> <span class="kc">false</span><span class="p">,</span>
+    <span class="nx">interval</span><span class="o">:</span> <span class="mi">300</span>
+  <span class="p">});</span>
+
+  <span class="nx">$</span><span class="p">(</span><span class="s2">".wait[data-speed='slow']"</span><span class="p">).</span><span class="nx">typewriter</span><span class="p">({</span>
+    <span class="nx">auto</span><span class="o">:</span> <span class="kc">false</span><span class="p">,</span>
+    <span class="nx">interval</span><span class="o">:</span> <span class="mi">1000</span>
+  <span class="p">});</span>
+
+  <span class="nx">$</span><span class="p">(</span><span class="s1">'.stop-waiting'</span><span class="p">).</span><span class="nx">click</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">$</span><span class="p">(</span><span class="s2">".wait"</span><span class="p">).</span><span class="nx">typewriter</span><span class="p">(</span><span class="s1">'type'</span><span class="p">);</span>
+  <span class="p">});</span>  
+</pre></div>
+
+<h3>Options</h3>
+
+<table>
+<tr>
+<td><code>auto</code></td>
+    <td>start typing once instantiated</td>
+    <td><code>true</code></td>
+  </tr>
+<tr>
+<td><code>interval</code></td>
+    <td>time in ms between each letter</td>
+    <td><code>80</code></td>
+  </tr>
+<tr>
+<td><code>caret</code></td>
+    <td>object of options for caret</td>
+    <td></td>
+  </tr>
+<tr>
+<td></td>
+    <td><code>visible</code></td>
+    <td><code>true</code></td>
+  </tr>
+<tr>
+<td></td>
+    <td><code>blink</code></td>
+    <td><code>true</code></td>
+  </tr>
+<tr>
+<td></td>
+    <td><code>interval</code></td>
+    <td><code>500</code></td>
+  </tr>
+<tr>
+<td><code>onLetter(letter)</code></td>
+    <td>function to be executed after each letter</td>
+    <td></td>
+  </tr>
+<tr>
+<td><code>onComplete($el)</code></td>
+    <td>function to be executed after typing is done</td>
+    <td></td>
+  </tr>
+</table><h3>Global Events</h3>
+
+<p><code>typingComplete</code></p>
+
+<p>Example:  </p>
+
+<div class="highlight"><pre>  <span class="nx">$</span><span class="p">(</span><span class="nb">window</span><span class="p">).</span><span class="nx">on</span><span class="p">(</span><span class="s1">'typingComplete'</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">e</span><span class="p">,</span> <span class="nx">el</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">$</span><span class="p">(</span><span class="nx">el</span><span class="p">).</span><span class="nx">css</span><span class="p">(</span><span class="s1">'background'</span><span class="p">,</span> <span class="s1">'blue'</span><span class="p">);</span>
+  <span class="p">});</span>
+</pre></div>
+      </section>
+
+      <footer>
+        <span class="ribbon-outer">
+          <span class="ribbon-inner">
+            <p>this project by <a href="https://github.com/albatrocity">albatrocity</a> can be found on <a href="https://github.com/albatrocity/jquery-typewriter">GitHub</a></p>
+          </span>
+          <span class="left-tail"></span>
+          <span class="right-tail"></span>
+        </span>
+        <p>Generated with <a href="http://pages.github.com">GitHub Pages</a> using Merlot</p>
+        <span class="octocat"></span>
+      </footer>
+
+    </div>
+
+              <script type="text/javascript">
+            var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+            document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+          </script>
+          <script type="text/javascript">
+            try {
+              var pageTracker = _gat._getTracker("UA-37567494-1");
+            pageTracker._trackPageview();
+            } catch(err) {}
+          </script>
+
+  </body>
+</html>
