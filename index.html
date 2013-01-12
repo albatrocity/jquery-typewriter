@@ -12,9 +12,36 @@
     <script type="text/javascript" src="javascripts/modernizr.js"></script>
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
     <script type="text/javascript" src="javascripts/headsmart.min.js"></script>
+    <script type="text/javascript" src="https://raw.github.com/albatrocity/jquery-typewriter/master/js/jquery.typewriter.js"></script>
     <script type="text/javascript">
       $(document).ready(function () {
         $('#main_content').headsmart()
+        window.found_a_winner = false
+        $(window).on('typingComplete', function(e, el) {
+          $(el).parents('.racer').find('h4').append("<small> - finished</small>")
+          if ( !window.found_a_winner ) {
+            $(el).parents('.racer').css('background', 'yellow').append("<strong>Winner!</strong>")
+            window.found_a_winner = true
+          }
+        })
+        $(".type-me[data-speed='med']").typewriter({
+          auto: false
+        });
+        $(".type-me[data-speed='fast']").typewriter({
+          auto: false,
+          interval: 30
+        });
+        $(".type-me[data-speed='slow']").typewriter({
+          auto: false,
+          interval: 600
+        });
+
+        $('.magic').click(function(e) {
+          e.preventDefault();
+          $(e.target).hide();
+          $('.demo h1').text("GO!")
+          $('.demo .type-me').typewriter('type');
+        });        
       })
     </script>
     <title>Jquery-typewriter by albatrocity</title>
@@ -50,7 +77,34 @@
 
 <p>For those who desire to bring the stunning visuals of PowerPoint 97 to the browser, jQuery Typewriter will present to you chunks of text, one painstaking letter at a time.</p>
 
-<h2>Dependencies</h2>
+<h1>Demo</h1>
+
+<div class="demo">
+  <h1>Writers, start your engines...</h1>
+  <a href="#" class="magic btn btn-primary">Go!</a>
+  <div class='racer'>
+    <h4>Leo Tolstoy</h4>
+    <p class='type-me' data-speed="med">We can know only that we know nothing. And that is the highest degree of human wisdom.</p>
+  </div>
+  <div class='racer'>
+    <h4>Hunter S. Thompson</h4>
+    <p class='type-me' data-speed="med">No sympathy for the devil; keep that in mind. Buy the ticket, take the ride...and if it occasionally gets a little heavier than what you had in mind, well...maybe chalk it off to forced conscious expansion: Tune in, freak out, get beaten.</p>
+  </div>
+  <div class='racer'>
+    <h4>Mark Twain</h4>
+    <p class='type-me' data-speed="med">Only one thing is impossible for God: To find any sense in any copyright law on the planet. </p>
+  </div>
+  <div class='racer'>
+    <h4>William S. Burroughs</h4>
+    <p class='type-me' data-speed="fast">After a shooting spree, they always want to take the guns away from the people who didn't do it. I sure as hell wouldn't want to live in a society where the only people allowed guns are the police and the military.</p>
+  </div>
+  <div class='racer'>
+    <h4>Barbie</h4>
+    <p class='type-me' data-speed="slow">I like ponies.</p>
+  </div>      
+</div>
+
+<h3>Dependencies</h3>
 
 <ul>
 <li><a href="http://jquery.com/">jQuery</a></li>
